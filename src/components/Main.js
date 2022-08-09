@@ -1,5 +1,6 @@
 import React from "react";
 import { useState} from "react";
+import {Icon} from "@iconify/react/dist/iconify";
 
 export default function Main() {
     const [message, setMessage] = useState("");
@@ -52,6 +53,18 @@ export default function Main() {
         textarea.remove();
     }
 
+    // When the download button is clicked, the text area will be downloaded as a .json file.
+    const handleDownload = (e) => {
+        e.preventDefault();
+        let element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(message));
+        element.setAttribute('download', 'data.json');
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+    }
+
 
     return (
         <div className="flex flex-col justify-center items-center h-screen">
@@ -73,6 +86,12 @@ export default function Main() {
                 <button className="text-center text-xl font-bold text-white-800" onClick={handleConvert}>Convert</button>
                 <button className="text-center text-xl font-bold text-white-800" onClick={handleReset}>Reset</button>
                 <button className="text-center text-xl font-bold text-white-800" onClick={handleCopy}>Copy</button>
+                <button className="text-center text-xl font-bold text-white-800" onClick={handleDownload}>Download</button>
+            </div>
+            <div className="flex flex-col justify-center items-center p-5">
+                <h2 className="text-center text-xl font-bold text-white-800">
+                    <a href="#"><Icon icon="akar-icons:github-fill" /></a>
+                </h2>
             </div>
 
         </section>
