@@ -90,7 +90,7 @@ export default function Main() {
             </div>
             <div className="flex flex-col justify-center items-center p-5">
                 <h2 className="text-center text-xl font-bold text-white-800">
-                    <a href="#"><Icon icon="akar-icons:github-fill" /></a>
+                    <a target="_blank" href="https://github.com/lewismunday/CSV2JSON"><Icon icon="akar-icons:github-fill" /></a>
                 </h2>
             </div>
 
