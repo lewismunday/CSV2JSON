@@ -51,6 +51,20 @@ export default function Main() {
         textarea.select();
         document.execCommand("copy");
         textarea.remove();
+        // Show the alert message
+        let alert = document.getElementById("alert");
+        alert.classList.add("opacity-0");
+        alert.classList.add("transition-opacity");
+        alert.classList.add("duration-500");
+        alert.classList.add("ease-in-out");
+        alert.classList.add("delay-500");
+        alert.classList.add("opacity-100");
+        setTimeout(() => {
+            alert.classList.remove("opacity-100");
+            alert.classList.add("opacity-0");
+        }
+        , 5000);
+
     }
 
     // When the download button is clicked, the text area will be downloaded as a .json file.
@@ -78,6 +92,21 @@ export default function Main() {
                 <h2 className="text-center text-xl font-bold text-white-800">
                     Paste your CSV data into the text area below and click the Convert button.
                 </h2>
+            </div>
+            <div id="alert" className="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md opacity-0"
+                 role="alert">
+                <div className="flex">
+                    <div className="py-1">
+                        <svg className="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 20 20">
+                            <path
+                                d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <p className="font-bold">JSON copied to clipboard</p>
+                    </div>
+                </div>
             </div>
             <div className="flex flex-col justify-center items-center p-5">
                 <textarea className="text-left text-xl font-bold text-white-800" rows="10" cols="50" id="message" name="message" value={message} onChange={handleMessageChange}></textarea>
